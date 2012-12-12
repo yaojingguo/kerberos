@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 @SuppressWarnings("all")
-public class AESExampleTest {
+public class Base64Test {
   
   @Test
   public void testBase64() {

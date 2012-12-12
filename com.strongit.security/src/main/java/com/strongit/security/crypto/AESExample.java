@@ -29,7 +29,6 @@ public class AESExample {
     return cipher;
   }
 
-  
   public static Cipher getCipher(String mode,
                                  byte[] key,
                                  byte[] iv,
@@ -116,16 +115,33 @@ public class AESExample {
     System.out.println("Key (base64): " + base64Encode(key));
     System.out.println("IV (base64): " + base64Encode(iv));
 
+    /**
+     * openssl command to do ECB encryption:
+     * 
+     * <pre>
+     * echo -n 'This is a demo message from Java!' \
+     * | openssl enc -aes-128-ecb \
+     * -K 000102030405060708090a0b0c0d0e0f  -out message -a
+     * </pre>
+     */
     byte[] cbcEncrypted = encryptCBC(key, iv, padding, raw);
     System.out.println("aes-128-cbc encrypted (base64): "
         + base64Encode(cbcEncrypted));
-
     byte[] cbcDecrypted = decryptCBC(key, iv, padding, cbcEncrypted);
     System.out.println("decrypted message : " + new String(cbcDecrypted));
 
+    /**
+     * openssl command to do CBC encryption:
+     * 
+     * <pre>
+     * echo -n 'This is a demo message from Java!' \
+     * | openssl enc -aes-128-cbc \
+     * -iv 000102030405060708090a0b0c0d0e0f \
+     * -K 000102030405060708090a0b0c0d0e0f  -out message -a
+     * </pre>
+     */
     byte[] ecbEncrypted = encryptECB(key, padding, raw);
     System.out.println("aes-128-ecb (base64): " + base64Encode(ecbEncrypted));
-
     byte[] ecbDecrypted = decryptECB(key, padding, ecbEncrypted);
     System.out.println("decrypted message : " + new String(ecbDecrypted));
   }

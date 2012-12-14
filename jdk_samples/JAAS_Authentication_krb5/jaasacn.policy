@@ -1,0 +1,8 @@
+/** Java 2 Access Control Policy for the JaasAcn Application **/
+
+
+grant codebase "file:./JaasAcn.jar" {
+   permission java.security.AllPermission;
+   // permission javax.security.auth.AuthPermission "createLoginContext.JaasSample";
+};
+

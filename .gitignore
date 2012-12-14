@@ -1,2 +1,3 @@
 com.strongit.security/target
 *.class
+jdk_samples/*/*.jar

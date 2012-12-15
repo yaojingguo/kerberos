@@ -1,5 +1,5 @@
 Kerberos Setup
 ==============
 Kerberos realm is EXAMPLE.COM. KDC and admin server is 
-jingguolin.example.com.  xiaoyu/play@EXAMPLE.COM is used for both 
-user and service.
+jingguolin.example.com. xiaoyu/play@EXAMPLE.COM is used for both user 
+and service.

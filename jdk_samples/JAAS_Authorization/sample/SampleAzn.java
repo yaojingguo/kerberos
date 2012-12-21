@@ -111,7 +111,6 @@ public class SampleAzn {
         } catch (Exception e) {
           // ignore
         }
-
       }
     }
 
@@ -124,6 +123,8 @@ public class SampleAzn {
     System.out.println("Authentication succeeded!");
 
     Subject mySubject = lc.getSubject();
+
+    System.out.println("Subject: " + mySubject);  
 
     // let's see what Principals we have
     Iterator principalIterator = mySubject.getPrincipals().iterator();

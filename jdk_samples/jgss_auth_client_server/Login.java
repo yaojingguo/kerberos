@@ -34,7 +34,10 @@
  * facility.
  */
 
+import java.util.*;
+
 import javax.security.auth.Subject;
+import java.security.Principal;
 import javax.security.auth.login.AccountExpiredException;
 import javax.security.auth.login.CredentialExpiredException;
 import javax.security.auth.login.FailedLoginException;
@@ -156,14 +159,33 @@ public class Login {
     }
 
     // push the subject into the current ACC
+    Subject mySubject = lc.getSubject();
+    infoSubject(mySubject);
     try {
-      Subject.doAsPrivileged(lc.getSubject(), new MyAction(args), null);
+      Subject.doAsPrivileged(mySubject, new MyAction(args), null);
     } catch (java.security.PrivilegedActionException pae) {
       pae.printStackTrace();
       System.exit(-1);
     }
 
     System.exit(0);
+  }
+
+  private static void infoSubject(Subject subject) {
+    System.out.println("Subject:");
+    infoColl(subject.getPrincipals(), "principals");
+    infoColl(subject.getPublicCredentials(), "public credentials");
+    infoColl(subject.getPrivateCredentials(), "private credentials");
+  }
+
+  public static void infoColl(Collection col, String name) {
+    System.out.println("\thas " + col.size() + " " + name);
+    Iterator it = col.iterator();
+    int i = 0;
+    while (it.hasNext()) {
+      i++;
+      System.out.println("\t" + i + ": " + it.next());  
+    }
   }
 }
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 javac sample/SampleAction.java \
   sample/SampleAzn.java \
   sample/module/SampleLoginModule.java \

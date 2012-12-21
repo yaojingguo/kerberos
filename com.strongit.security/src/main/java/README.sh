@@ -8,3 +8,5 @@ java -cp Caller.jar:Callee.jar \
   -Djava.security.policy=stack.policy \
   Caller
 
+java -Djava.security.auth.login.config=login.config \
+  Login
